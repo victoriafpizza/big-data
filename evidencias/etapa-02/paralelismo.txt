@@ -1,0 +1,51 @@
+[2026-11-12T17:35:01.053+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/rota_livre_ingestao_diaria.py
+{
+  "dag_id": "rota_livre_ingestao_diaria",
+  "run_id": "manual__etapa02_paralelismo",
+  "data_logica": "2026-11-12",
+  "executor": "LocalExecutor",
+  "parallelism": 4,
+  "max_active_runs": 1,
+  "max_active_tasks": 16,
+  "pool_slots": 128,
+  "trigger_rule": "all_success",
+  "sobreposicao_segundos": 0.606481,
+  "tarefas": [
+    {
+      "id": "extrair_dados_urbanos",
+      "estado": "success",
+      "inicio_utc": "2026-11-12T17:33:08.741056+00:00",
+      "fim_utc": "2026-11-12T17:33:09.865670+00:00",
+      "dependencias": []
+    },
+    {
+      "id": "extrair_obstaculos",
+      "estado": "success",
+      "inicio_utc": "2026-11-12T17:33:08.740329+00:00",
+      "fim_utc": "2026-11-12T17:33:09.347537+00:00",
+      "dependencias": []
+    },
+    {
+      "id": "verificar_arquivos",
+      "estado": "success",
+      "inicio_utc": "2026-11-12T17:33:11.638696+00:00",
+      "fim_utc": "2026-11-12T17:33:12.801693+00:00",
+      "dependencias": [
+        "extrair_dados_urbanos",
+        "extrair_obstaculos"
+      ]
+    }
+  ],
+  "resultado_verificacao": {
+    "obstaculos": {
+      "registros": 2,
+      "sha256": "6624d19bbda83c7b00934586704880315d45084f7216f6bf41a93215d09cb751",
+      "status": "publicado"
+    },
+    "geosampa_calcadas": {
+      "registros": 903,
+      "sha256": "eb6f248ef6a847b7dad1d303d49df342c1ac9147e43bc7baf40af9d3143dd97f",
+      "status": "publicado"
+    }
+  }
+}

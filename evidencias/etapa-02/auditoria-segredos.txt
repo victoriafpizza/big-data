@@ -1,0 +1,13 @@
+Git: 7 caminhos locais protegidos, .env real fora do índice.
+Logs de serviço e de tarefas: nenhum dos quatro valores configurados encontrado.
+mascaramento ativo; Fernet válido; chave web configurada
+mascaramento ativo; Fernet válido; chave web configurada
+Arquivos elegíveis para Git: nenhum dos quatro valores configurados encontrado.
+5:53PM INF scanned ~81533 bytes (81.53 KB) in 90.2ms
+5:53PM WRN leaks found: 5
+Falso positivo revisado: generic-api-key .env.example:11
+Falso positivo revisado: generic-api-key evidencias/arquivos-host.json:22
+Falso positivo revisado: generic-api-key README.md:23
+Falso positivo revisado: generic-api-key tests/test_ingestao.py:15
+Falso positivo revisado: generic-api-key tests/test_ingestao.py:59
+Auditoria aprovada: 5 alertas conhecidos, zero ocorrências não revisadas.

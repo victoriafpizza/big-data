@@ -1,0 +1,13 @@
+docker compose config -q: saída 0
+NAME                              IMAGE                              COMMAND                  SERVICE     CREATED          STATUS                      PORTS
+rota-livre-big-data-db-1          postgres:16-alpine                 "docker-entrypoint.s…"   db          59 minutes ago   Up 59 minutes (healthy)     5432/tcp
+rota-livre-big-data-init-1        apache/airflow:2.10.5-python3.11   "/usr/bin/dumb-init …"   init        59 minutes ago   Exited (0) 59 minutes ago   
+rota-livre-big-data-scheduler-1   apache/airflow:2.10.5-python3.11   "/usr/bin/dumb-init …"   scheduler   2 minutes ago    Up 2 minutes (healthy)      8080/tcp
+rota-livre-big-data-web-1         apache/airflow:2.10.5-python3.11   "/usr/bin/dumb-init …"   web         2 minutes ago    Up 2 minutes (healthy)      127.0.0.1:8088->8080/tcp
+No data found
+[2026-11-12T17:33:09.835+0000] {ingestao.py:182} INFO - Reutilizado sem regravação: /opt/airflow/chegada/geosampa_calcadas/data=2026-11-12, 903 registros, SHA-256 eb6f248ef6a847b7dad1d303d49df342c1ac9147e43bc7baf40af9d3143dd97f
+[2026-11-12T17:33:09.865+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=rota_livre_ingestao_diaria, task_id=extrair_dados_urbanos, run_id=manual__etapa02_paralelismo, execution_date=20261112T165500, start_date=20261112T173308, end_date=20261112T173309
+[2026-11-12T17:33:09.311+0000] {ingestao.py:182} INFO - Reutilizado sem regravação: /opt/airflow/chegada/obstaculos/data=2026-11-12, 2 registros, SHA-256 6624d19bbda83c7b00934586704880315d45084f7216f6bf41a93215d09cb751
+[2026-11-12T17:33:09.347+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=rota_livre_ingestao_diaria, task_id=extrair_obstaculos, run_id=manual__etapa02_paralelismo, execution_date=20261112T165500, start_date=20261112T173308, end_date=20261112T173309
+[2026-11-12T17:33:12.713+0000] {python.py:240} INFO - Done. Returned value was: {'obstaculos': {'registros': 2, 'sha256': '6624d19bbda83c7b00934586704880315d45084f7216f6bf41a93215d09cb751', 'status': 'publicado'}, 'geosampa_calcadas': {'registros': 903, 'sha256': 'eb6f248ef6a847b7dad1d303d49df342c1ac9147e43bc7baf40af9d3143dd97f', 'status': 'publicado'}}
+[2026-11-12T17:33:12.801+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=rota_livre_ingestao_diaria, task_id=verificar_arquivos, run_id=manual__etapa02_paralelismo, execution_date=20261112T165500, start_date=20261112T173311, end_date=20261112T173312

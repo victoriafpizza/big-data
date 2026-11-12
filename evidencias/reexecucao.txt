@@ -1,0 +1,13 @@
+[2026-11-12T16:41:08.993+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags
+Run manual__validacao_fiap reexecutado com sucesso na data lógica 2026-11-12T16:36:47+00:00.
+Primeira conclusão: 12/11/2026 13:40:44 -03:00. Segunda conclusão: 12/11/2026 13:41:11 -03:00.
+Arquivos, contagens, tamanhos, hashes, timestamps e quantidade de arquivos idênticos.
+dag_id                     | execution_date            | task_id               | state   | start_date                       | end_date                        
+===========================+===========================+=======================+=========+==================================+=================================
+rota_livre_ingestao_diaria | 2026-11-12T16:36:47+00:00 | extrair_obstaculos    | success | 2026-11-12T16:41:10.105934+00:00 | 2026-11-12T16:41:10.328836+00:00
+rota_livre_ingestao_diaria | 2026-11-12T16:36:47+00:00 | extrair_dados_urbanos | success | 2026-11-12T16:41:10.105934+00:00 | 2026-11-12T16:41:10.487458+00:00
+rota_livre_ingestao_diaria | 2026-11-12T16:36:47+00:00 | verificar_arquivos    | success | 2026-11-12T16:41:11.197590+00:00 | 2026-11-12T16:41:11.598681+00:00
+                                                                                                                                                              
+[2026-11-12T16:41:10.476+0000] {ingestao.py:169} INFO - Reutilizado sem regravação: /opt/airflow/chegada/geosampa_calcadas/data=2026-11-12, 903 registros, SHA-256 eb6f248ef6a847b7dad1d303d49df342c1ac9147e43bc7baf40af9d3143dd97f
+[2026-11-12T16:41:10.316+0000] {ingestao.py:169} INFO - Reutilizado sem regravação: /opt/airflow/chegada/obstaculos/data=2026-11-12, 2 registros, SHA-256 6624d19bbda83c7b00934586704880315d45084f7216f6bf41a93215d09cb751
+

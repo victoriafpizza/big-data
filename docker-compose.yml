@@ -1,0 +1,92 @@
+name: rota-livre-big-data
+
+x-airflow: &airflow
+  image: apache/airflow:2.10.5-python3.11
+  environment: &airflow-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:?defina AIRFLOW_FERNET_KEY}
+    AIRFLOW__CORE__HIDE_SENSITIVE_VAR_CONN_FIELDS: 'true'
+    AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_WEB_SECRET_KEY:?defina AIRFLOW_WEB_SECRET_KEY}
+    AIRFLOW__CORE__PARALLELISM: '4'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: America/Sao_Paulo
+    AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE: America/Sao_Paulo
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD}@db/airflow
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: '10'
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    PYTHONPATH: /opt/airflow/src
+    PYTHONDONTWRITEBYTECODE: '1'
+    ROTA_LIVRE_API_URL: ${ROTA_LIVRE_API_URL:-http://api:8000/api/obstacles}
+    GEOSAMPA_WFS_URL: ${GEOSAMPA_WFS_URL:-https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs}
+    GEOSAMPA_BBOX: ${GEOSAMPA_BBOX:--46.64,-23.556,-46.628,-23.545}
+    INGEST_HTTP_TIMEOUT: ${INGEST_HTTP_TIMEOUT:-30}
+    INGEST_ROOT: /opt/airflow/chegada
+  volumes:
+    - ./dags:/opt/airflow/dags:ro
+    - ./src:/opt/airflow/src:ro
+    - ./chegada:/opt/airflow/chegada
+    - airflow-logs:/opt/airflow/logs
+  depends_on:
+    init:
+      condition: service_completed_successfully
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_DB: airflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD, pg_isready, -U, airflow, -d, airflow]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+  init:
+    <<: *airflow
+    command: [airflow, version]
+    environment:
+      <<: *airflow-env
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_ADMIN_USER:-admin}
+      _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_ADMIN_PASSWORD:?defina AIRFLOW_ADMIN_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+  scheduler:
+    <<: *airflow
+    command: scheduler
+    networks:
+      - default
+      - rota-livre
+    healthcheck:
+      test: [CMD, curl, --fail, 'http://localhost:8974/health']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  web:
+    <<: *airflow
+    command: webserver
+    ports:
+      - '127.0.0.1:${AIRFLOW_PORT:-8088}:8080'
+    healthcheck:
+      test: [CMD, curl, --fail, 'http://localhost:8080/health']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+networks:
+  rota-livre:
+    external: true
+    name: ${ROTA_LIVRE_NETWORK:-rota-livre_rota-livre-network}
+
+volumes:
+  postgres-data:
+  airflow-logs:
+
+
+

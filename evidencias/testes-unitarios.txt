@@ -1,0 +1,10 @@
+test_geosampa_truncado_e_rejeitado (__main__.IngestaoTest.test_geosampa_truncado_e_rejeitado) ... ok
+test_lote_corrompido_falha_sem_regravar (__main__.IngestaoTest.test_lote_corrompido_falha_sem_regravar) ... ok
+test_obstaculos_duplicados_sao_rejeitados (__main__.IngestaoTest.test_obstaculos_duplicados_sao_rejeitados) ... ok
+test_reexecucao_preserva_arquivos_e_metadados (__main__.IngestaoTest.test_reexecucao_preserva_arquivos_e_metadados) ... ok
+test_resposta_vazia_nao_publica_lote (__main__.IngestaoTest.test_resposta_vazia_nao_publica_lote) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.018s
+
+OK

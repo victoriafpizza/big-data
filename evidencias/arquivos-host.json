@@ -1,0 +1,34 @@
+[
+  {
+    "fonte": "geosampa_calcadas",
+    "arquivo": "C:\\GSBigData\\GlobalSolution2026\\ROTA-LIVRE\\big-data\\chegada\\geosampa_calcadas\\data=2026-11-12\\calcadas.geojson",
+    "metadados": "C:\\GSBigData\\GlobalSolution2026\\ROTA-LIVRE\\big-data\\chegada\\geosampa_calcadas\\data=2026-11-12\\metadados.json",
+    "url": "https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geoportal%3Acalcada&outputFormat=application%2Fjson&srsName=EPSG%3A4326&bbox=-46.64%2C-23.556%2C-46.628%2C-23.545%2Curn%3Aogc%3Adef%3Acrs%3AOGC%3A%3ACRS84",
+    "extraido_em_utc": "2026-11-12T16:40:42.712735+00:00",
+    "http_status": 200,
+    "content_type": "application/json",
+    "registros": 903,
+    "bytes": 1013858,
+    "sha256": "eb6f248ef6a847b7dad1d303d49df342c1ac9147e43bc7baf40af9d3143dd97f",
+    "metadados_sha256": "f349f04fa7c47df33690ce9b515f152e41f9421d74b1a202f62fbb5d2e5573d2",
+    "mtime_utc": "2026-11-12T16:40:42.8962652Z",
+    "metadados_mtime_utc": "2026-11-12T16:40:42.9005086Z",
+    "arquivos_na_particao": 2
+  },
+  {
+    "fonte": "obstaculos",
+    "arquivo": "C:\\GSBigData\\GlobalSolution2026\\ROTA-LIVRE\\big-data\\chegada\\obstaculos\\data=2026-11-12\\obstaculos.json",
+    "metadados": "C:\\GSBigData\\GlobalSolution2026\\ROTA-LIVRE\\big-data\\chegada\\obstaculos\\data=2026-11-12\\metadados.json",
+    "url": "http://api:8000/api/obstacles",
+    "extraido_em_utc": "2026-11-12T16:40:42.082219+00:00",
+    "http_status": 200,
+    "content_type": "application/json",
+    "registros": 2,
+    "bytes": 221,
+    "sha256": "6624d19bbda83c7b00934586704880315d45084f7216f6bf41a93215d09cb751",
+    "metadados_sha256": "f40fa065e517621d967ae652c691136a5a72c49d8f5aaea935f28f958b2cca8e",
+    "mtime_utc": "2026-11-12T16:40:42.0938886Z",
+    "metadados_mtime_utc": "2026-11-12T16:40:42.0995113Z",
+    "arquivos_na_particao": 2
+  }
+]

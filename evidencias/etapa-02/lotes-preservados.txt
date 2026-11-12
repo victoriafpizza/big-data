@@ -1,0 +1,4 @@
+geosampa_calcadas/calcadas.geojson: SHA-256 e timestamp iguais à evidência da etapa 1.
+geosampa_calcadas/metadados.json: SHA-256 e timestamp iguais à evidência da etapa 1.
+obstaculos/obstaculos.json: SHA-256 e timestamp iguais à evidência da etapa 1.
+obstaculos/metadados.json: SHA-256 e timestamp iguais à evidência da etapa 1.

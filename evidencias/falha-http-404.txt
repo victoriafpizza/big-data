@@ -1,0 +1,5 @@
+[2026-11-12T16:38:34.338+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+urllib.error.HTTPError: HTTP Error 404: Not Found
+[2026-11-12T16:38:34.352+0000] {taskinstance.py:1226} INFO - Marking task as UP_FOR_RETRY. dag_id=rota_livre_ingestao_diaria, task_id=extrair_obstaculos, run_id=__airflow_temporary_run_2026-11-12T16:38:33.811535+00:00__, execution_date=20261112T160000, start_date=, end_date=20261112T163834
+urllib.error.HTTPError: HTTP Error 404: Not Found
+Exit code de airflow tasks test: 1. Ausencia de pasta de teste (test ! -e): 0.

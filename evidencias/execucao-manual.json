@@ -1,0 +1,8 @@
+{
+  "dag_id": "rota_livre_ingestao_diaria",
+  "run_id": "manual__validacao_fiap",
+  "state": "success",
+  "execution_date": "2026-11-12T13:36:47-03:00",
+  "start_date": "2026-11-12T13:40:41.579194-03:00",
+  "end_date": "2026-11-12T13:40:44.808227-03:00"
+}
